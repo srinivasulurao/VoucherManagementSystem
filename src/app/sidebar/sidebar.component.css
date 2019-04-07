@@ -1,0 +1,26 @@
+.company_logo{
+    display: block;
+    clear: both;
+    float:none;
+    padding-top:30px;
+    text-align:center;
+    padding-bottom:30px;
+}
+
+ul li a{
+    color:#EFBB35 !important;
+}
+
+.company_name{
+    color:white;
+}
+
+.nav-link{
+    transition: 1s;
+}
+
+.active, .nav-link:hover{
+    background:#123456;
+    border-bottom:1px solid lightgrey;
+}
+

@@ -1,0 +1,33 @@
+.scenery-background{
+    /*background:url("https://wrappixel.com/demos/admin-templates/material-pro/assets/images/big/img1.jpg");*/
+    background: #123456;
+    height:100%;
+    width:100%;
+    top:0px;
+    position:absolute;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.login-form{
+    width:400px;
+    box-shadow: 0 0 10px;
+    padding:20px;
+    border-radius: 4px;
+    margin: auto;
+    margin-top:300px;
+    background:white;
+    height:300px;
+}
+
+.login-button{
+    width:100%;
+    margin-top:10px;
+}
+
+.alert{
+    top:30px;
+    position: relative;
+}
+
+

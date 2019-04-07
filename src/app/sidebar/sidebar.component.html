@@ -1,0 +1,16 @@
+<nav class="bg-dark sidebar">
+    <div class="sidebar-sticky" [ngStyle]="sticky_sidebar_style">
+      <div class='company_logo'>
+        <img [src]="avatar" class="rounded"><br><br>
+        <span class='company_name'>{{company_name}}</span>
+      </div>
+      <ul class="nav flex-column">
+        <li *ngFor="let sl of sidebar_links" class="nav-item">
+          <a (click)=routePage(sl.link_url) class="nav-link {{sl.class}}" href="javascript:void(0)">
+            <span><i class="{{sl.icon}}"></i>&nbsp; {{sl.link_name}} </span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>

@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+    font-weight: 300 !important;
+    color:#333;
+}
+
+.left_sidebar{
+    padding:0px !important;
+    display:inline-block !important; 
+    vertical-align: top;
+}
+
+.content-right{
+    display: inline-block; 
+    vertical-align: top;
+    padding-top:20px;
+}
+
+h1{
+    color:#123456;
+}
+
+.paginate_button{
+    background: #fff;
+   cursor: pointer;
+   }
+   .paginate_button:hover{
+     background: #b20000;
+   }
+   .paginate_button.current{
+     background: #b20000;
+   }
+
+
+.th-background{
+    background: #123456;
+    color:white;
+}
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
