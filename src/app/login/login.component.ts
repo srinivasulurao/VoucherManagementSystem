@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   public alertClass;
 
   constructor(private vms_api:VmsApiService,private router: Router) { 
-    this['user_email']='n.srinivasulurao@gmail.com';
-    this['user_password']='ATG2dfPQ'; 
+    //this['user_email']='n.srinivasulurao@gmail.com';
+    //this['user_password']='ATG2dfPQ';  
     this.button_submitting_style={"display":"none"};
     this.login_button_style={"display":"inline-block"};
     this.scenery_background={"min-height":"700px"}; 

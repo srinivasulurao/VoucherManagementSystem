@@ -5,14 +5,18 @@
 </div>
 
 <div class='content-right col-md-10'>
-<h1>Vouchers</h1><hr>
+<h1>Vouchers
+    <button mat-raised-button color='primary'  style='float:right' type="button">Upload Vouchers</button>
+    <button mat-raised-button color='accent'  style='float:right;margin-right:10px' type="button">Sample File</button>
+</h1><hr>
+  
 <div *ngIf="alertMessage" [ngClass]="alertClass">{{alertMessage}}</div>
 <table datatable class="row-border hover table table-striped" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
     <thead><tr class='th-background'><th>Voucher ID</th> <th>Voucher</th><th>Validity</th><th>Redemption Status</th><th>Enable/Disable</th><th>View Details</th><th>Delete</th></tr></thead>
     <tr *ngFor="let voucher of vouchers">
         <td>{{voucher.voucher_id}}</td>
-        <td><code>{{voucher.coupon_code}}</code></td>
-        <td>{{voucher.validity  |  date:'d/M/y h:ss a'}}</td>
+        <td><span style='font-size:15px;width:100%' class='badge badge-primary'>{{voucher.coupon_code}}</span></td>
+        <td>{{voucher.validity  |  date}}</td>
         <td><button class='btn btn-success' (click)="changeVoucherRedemption(voucher.voucher_id,0)" *ngIf="voucher.redemption_status==1" title="Redeemed"><i   class='fa fa-check'></i></button><button (click)="changeVoucherRedemption(voucher.voucher_id,1)" title="Not Redeemed" *ngIf="voucher.redemption_status==0" class='btn btn-danger'> <i   class='fa fa-times-circle'></i></button></td>
         <td><button class='btn btn-success' (click)="disableEnableVoucher(voucher.voucher_id,0)" *ngIf="voucher.enabled==1"><i title="Enabled" class='fa fa-check'></i></button> <button class='btn btn-danger' (click)="disableEnableVoucher(voucher.voucher_id,1)" *ngIf="voucher.enabled==0"><i title="Disabled"   class='fa fa-times-circle'></i></button></td>
         <td><button class='btn btn-info' (click)="viewEditVoucherDetails(voucher.voucher_id)"><i class='fa fa-eye'></i></button></td>

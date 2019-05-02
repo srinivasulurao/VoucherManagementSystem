@@ -52,7 +52,46 @@ export class VmsApiService {
     return this.http.post(this.webservice+"delete-voucher",postParams);
   }
 
+  loadVoucherData(voucher_id,user_id){
+    let postParams=new FormData();   
+    postParams.append('user_id',user_id);
+    postParams.append('voucher_id',voucher_id); 
+    return this.http.post(this.webservice+"get-voucher-details",postParams); 
+  }
 
+  loadProductList(user_id){
+    let postParams=new FormData();
+    postParams.append('user_id',user_id);
+    return this.http.post(this.webservice+"get-company-products",postParams);
+  }
+
+  updateVoucherDetails(user_id, voucher_id, voucher_validity, product_linked, redemption_status, enabled, created_on, redeemed_on, notes){
+
+    var rs=(redemption_status=='yes')?1:0;
+    var enbl=(enabled=='yes')?1:0;  
+
+    var vv_date=new Date(voucher_validity);
+    var co_date=new Date(created_on); 
+    var ro_date=new Date(redeemed_on); 
+
+    //Some Bug in New Date function, as it stars with count 0
+    co_date.setMonth(co_date.getMonth()+1);  
+    ro_date.setMonth(ro_date.getMonth()+1);
+    vv_date.setMonth(vv_date.getMonth()+1); 
+
+    let postParams=new FormData();
+    postParams.append('user_id',user_id);
+    postParams.append('voucher_id',voucher_id);
+    postParams.append('voucher_validity',vv_date.getFullYear()+'-'+vv_date.getMonth()+'-'+vv_date.getDate()+' '+'00:00:00');   
+    postParams.append('product_linked',product_linked.split('product_').join(''));
+    postParams.append('redemption_status',rs.toString());
+    postParams.append('enabled',enbl.toString());
+    postParams.append('created_on',co_date.getFullYear()+'-'+co_date.getMonth()+'-'+co_date.getDate()+' '+'00:00:00');
+    postParams.append('redeemed_on',ro_date.getFullYear()+'-'+ro_date.getMonth()+'-'+ro_date.getDate()+' '+'00:00:00');
+    postParams.append('notes',notes); 
+
+    return this.http.post(this.webservice+'submit-voucher-details',postParams);
+  }
 
 
 

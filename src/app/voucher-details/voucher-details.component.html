@@ -1,1 +1,79 @@
-<h4 mat-dialog-title>Voucher Details</h4>
+<div class='container'>
+<h4 mat-dialog-title>Voucher Details &nbsp; <mat-progress-bar *ngIf="showProgress" value="{{loading_val}}" ></mat-progress-bar> </h4>
+<div class='{{alertClass}}' *ngIf="alertMsg">{{alertMsg}}</div>
+<form method='post' (ngSubmit)="SubmitVoucherDetails()">
+<mat-form-field style='width:520px'>
+<mat-label>Coupon Code</mat-label>
+<input matInput disabled type='text' [(ngModel)]="coupon_code" name="coupon_code">
+</mat-form-field>  
+
+<mat-form-field style='width:520px;'>
+<mat-label>Voucher Validity</mat-label>
+<input matInput [matDatepicker]="datepicker_voucher_validity" [formControl]="voucherValidityControl">
+      <mat-datepicker-toggle matSuffix [for]="datepicker_voucher_validity"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker_voucher_validity></mat-datepicker>
+      <mat-error>Invalid Voucher Validity Date</mat-error>   
+</mat-form-field>
+
+<mat-form-field style='width:520px'>
+    <mat-label>Product Linked</mat-label>
+    <mat-select [formControl]="productLinkedControl">
+      <mat-option value=''>-----Select Product-----</mat-option>
+      <mat-option *ngFor="let product of product_list" value="product_{{product.product_id}}">{{product.product_name}}</mat-option> 
+    </mat-select> 
+    <mat-error> 
+        Product linking is mandatory !
+      </mat-error>
+</mat-form-field>
+
+  <mat-form-field style='width:240px;'>
+    <mat-label>Voucher Redeemed</mat-label>
+    <mat-select [formControl]="redemptionStatusControl">
+      <mat-option value=''>---Select---</mat-option>
+      <mat-option value='no'>No</mat-option>
+      <mat-option value="yes">Yes</mat-option>
+    </mat-select>
+    <mat-error>This value is required !</mat-error>
+  </mat-form-field>
+
+<mat-form-field style="width:240px; margin-left:20px;">
+    <mat-label>Voucher Enabled</mat-label>
+    <mat-select [formControl]="enabledControl"> 
+      <mat-option value=''>---Select---</mat-option>
+      <mat-option value='no'>No</mat-option> 
+      <mat-option value="yes">Yes</mat-option>  
+      </mat-select>
+      <mat-error>This value is required !</mat-error>
+    </mat-form-field>
+
+<mat-form-field style='width:240px;'>
+      <mat-label>Voucher Created On</mat-label>
+      <input matInput [matDatepicker]="datepicker_voucher_created_on" [formControl]="createdOnControl">
+      <mat-datepicker-toggle matSuffix [for]="datepicker_voucher_created_on"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker_voucher_created_on></mat-datepicker>
+      <mat-error>Invalid Creation Date !</mat-error>
+</mat-form-field>
+
+<mat-form-field style="width:240px; margin-left:20px;">
+      <mat-label>Voucher Redeemed On</mat-label>
+      <input type='text' matInput [matDatepicker]="datepicker_voucher_redeemed_on"  [formControl]="redeemedOnControl" >
+      <mat-datepicker-toggle matSuffix [for]="datepicker_voucher_redeemed_on"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker_voucher_redeemed_on></mat-datepicker>
+      <mat-error></mat-error>
+</mat-form-field>
+
+<mat-form-field style='width:520px;height:100px;'>
+<mat-label>Voucher Notes</mat-label>
+<textarea matInput rows='5' [formControl]="notesControl"></textarea>
+<mat-hint>Here you can mention the users, to whom you have given this voucher to avoid duplicacy, make sure you are sending the voucher to only one user.</mat-hint>
+</mat-form-field>
+
+<input type='hidden' ([ngModel])="voucher_id" name='voucher_id'>
+
+<br><br><br>
+<button mat-raised-button color='primary'  type="submit">Submit</button> &nbsp;
+<button mat-raised-button color='warn' [mat-dialog-close]="false">Close</button> 
+
+
+</form>
+</div>

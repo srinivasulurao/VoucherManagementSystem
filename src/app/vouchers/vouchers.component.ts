@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material'; 
 import { DeleteWarningComponent } from '../delete-warning/delete-warning.component';
-import {VoucherDetailsComponent } from '../voucher-details/voucher-details.component'; 
+import { VoucherDetailsComponent } from '../voucher-details/voucher-details.component'; 
 @Component({
   selector: 'app-vouchers',
   templateUrl: './vouchers.component.html',
@@ -28,7 +28,7 @@ export class VouchersComponent implements OnInit {
   ngOnInit() {
     this.dtOptions={
       pagingType:'full_numbers',
-      pageLength:1
+      pageLength:10
     };
     var user_id=localStorage.getItem('user_id'); 
     //load the webservice to get the user vouchers.
@@ -104,18 +104,16 @@ export class VouchersComponent implements OnInit {
       this.alertMessage="Error: "+error.message;
     });
   }
-
+ 
   viewEditVoucherDetails(voucher_id){
     let voucherdialog=this.dialog.open(VoucherDetailsComponent,{
-      height: '200px',width: '600px',autoFocus: false,
-    }); 
+      height: '650px',width: '600px',autoFocus: false,data:{'voucher_id':voucher_id}
+    });   
 
     voucherdialog.afterClosed()
       .subscribe(selection => {
         console.log(selection); 
-        if(selection==true){
-          this.callDeleteWebservice(voucher_id);
-        }
+        
       });
   }
 

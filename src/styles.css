@@ -3,7 +3,14 @@
 body{
     font-weight: 300 !important;
     color:#333;
+    /*font-family: 'Roboto', sans-serif !important; */
+    font-family: 'Carrois Gothic', sans-serif !important;
+    font-size: 15px !important;
 }
+
+h1,h2,h3,h4,h5,h6,label,input,button,textarea{
+    font-family: 'Carrois Gothic', sans-serif !important;
+}  
 
 .left_sidebar{
     padding:0px !important;
@@ -40,3 +47,16 @@ h1{
 html, body { height: 100%; }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option{
+    height:2em !important; 
+}
+
+.alert{
+    font-weight: bold !important; 
+}
+
+td,th{
+    vertical-align: middle !important; 
+}
+

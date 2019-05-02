@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -19,15 +19,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //######################################################################################
 // We have to add the angular material, it is the standard UI framework for Angular.
 //######################################################################################
-import { MatDialogModule } from '@angular/material';  
+import { MatDialogModule, MatNativeDateModule, MatInputModule } from '@angular/material';  
 import { MatButtonModule } from '@angular/material';
-
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSelectModule } from  '@angular/material'; 
+import { MatBadgeModule } from '@angular/material'; 
+import { MatProgressBarModule } from '@angular/material'; 
 //######################################################################################
 //These are for the entrycomponents as a part of angular material framework.
 //######################################################################################
 
 import { DeleteWarningComponent } from './delete-warning/delete-warning.component';
-import { VoucherDetailsComponent } from './voucher-details/voucher-details.component'; 
+import { VoucherDetailsComponent } from './voucher-details/voucher-details.component';
+import { ProductsComponent } from './products/products.component'; 
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { VoucherDetailsComponent } from './voucher-details/voucher-details.compo
     ChangePasswordComponent,
     VouchersComponent,
     DeleteWarningComponent,
-    VoucherDetailsComponent
+    VoucherDetailsComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,14 @@ import { VoucherDetailsComponent } from './voucher-details/voucher-details.compo
     DataTablesModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatBadgeModule,
+    MatProgressBarModule
   ], 
   entryComponents:[
     DeleteWarningComponent,

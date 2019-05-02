@@ -30,4 +30,19 @@
     position: relative;
 }
 
+.mat-form-field{
+    width:100% !important; 
+}
 
+.login_additional_tasks{
+    float:right;
+    line-height: 20px !important;
+    margin-top:10px;
+}
+
+.login_additional_tasks a{
+    font-weight:400;
+    color:#123456;
+    font-size:13px;
+    
+}
