@@ -1,6 +1,6 @@
-<h4>Sample Voucher File Details</h4><hr>
+<h4>Bulk Voucher Uploading File Details</h4>
 <mat-card>
-  <mat-card-header><mat-card-title>Expected Format</mat-card-title></mat-card-header>
+  <mat-card-header><mat-card-title>Expected CSV File Format.</mat-card-title></mat-card-header>
   <mat-card-content>
      <img src='../assets/img/sample-csv-img.png' class='thumbnails' style='width:100%'>  
   </mat-card-content>
@@ -9,10 +9,10 @@
 <br>
 <table class='table table-striped'>
   <tr><th style='width:30%'>Rows/Columns</th><th>Details</th></tr>
-  <tr><td>ROW 1</td><td>This row should be untouched, this is the expected format using which the system will process the uploading task.</td></tr>
-  <tr><td>Column 1 - <font color='red'>Required</font> (coupon_code)</td><td>In this column, you should add all the coupon code which your site customer will use it for redemption.</td></tr>
-  <tr><td>Column 2 - <font color='red'>Required</font> (voucher_validity)</td><td>This column should include the voucher expiration date, the voucher/coupon will stop working after this mentioned date.</td></tr>
-  <tr><td>Column 3 - Optional (product)</td><td>In this column you should mention the product to which the voucher/coupon should be linked. The product name should be same as that of present in the system.</td></tr>
-  <tr><td>Column 4 - Optional (notes)</td><td>Here you can some notes related to the voucher.</td></tr>
+  <tr><td>ROW 1</td><td>This row should be untouched, this is the expected format using which the system will process the voucher/coupon uploading task.</td></tr>
+  <tr><td>coupon_code <font color='red'>*</font> </td><td>In this column you should add all the coupon code which your site customer will use it for redemption. Data for this column is mandatory.</td></tr>
+  <tr><td>voucher_validity <font color='red'>*</font> </td><td>This column you should include the voucher expiration date, the voucher/coupon will stop working after this mentioned date. Data for this column is mandatory.</td></tr>
+  <tr><td>product</td><td>In this column you can mention the product to which the voucher/coupon should be linked. The product name should be same as that of present in the system. Data for this column is optional.</td></tr>
+  <tr><td>notes</td><td>Here you can some notes related to the voucher. Data for this column is optional.</td></tr>
 </table>
 
