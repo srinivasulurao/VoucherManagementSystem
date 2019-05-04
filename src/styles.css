@@ -60,3 +60,28 @@ td,th{
     vertical-align: middle !important; 
 }
 
+.alert-success{
+    background-image: url(https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    background-position: 10px 2px;
+    padding-left: 46px !important;
+}
+
+.alert-danger{
+    background-image:url(https://cdn3.iconfinder.com/data/icons/simple-web-navigation/165/cross-512.png);
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: 10px 10px;  
+    padding-left: 46px !important;
+}
+
+button.mat-sort-header-button{
+    margin:auto !important; 
+    font-weight: 500 !important;  
+    color:white !important;
+}
+
+.badge{
+ font-weight:400 !important; 
+}

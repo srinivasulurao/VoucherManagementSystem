@@ -1,32 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { VmsApiService } from '../vms-api.service';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material'; 
 import { DeleteWarningComponent } from '../delete-warning/delete-warning.component';
 import { VoucherDetailsComponent } from '../voucher-details/voucher-details.component'; 
-import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material'; 
-import { SampleVoucherFileComponent } from '../sample-voucher-file/sample-voucher-file.component';
-
-
-export interface VoucherList {
-  voucher_id: string;
-  coupon_code: string;
-  validity:string;
-  enabled: string;
-  redemption_status: string;
-}
-
-
-
 @Component({
   selector: 'app-vouchers',
-  templateUrl: './vouchers.component.html',
+  templateUrl: './vouchers.component_old.html',
   styleUrls: ['./vouchers.component.css']
 })
-
-
-
 export class VouchersComponent implements OnInit {
 
   vouchers:any;
@@ -36,39 +19,24 @@ export class VouchersComponent implements OnInit {
   public alertClass:any;
   public redeemed:any;
   public not_redeemed:any;
-  displayedColumns: string[] = ['Voucher ID', 'Coupon Code', 'Voucher Validity', 'Enabled','Redemption Status','View','Delete'];
-  dataSource: MatTableDataSource<VoucherList>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  
   constructor(private vms_api:VmsApiService, private router:Router, private dialog:MatDialog) { 
 
     this.redeemed="Redeemed";
     this.not_redeemed="Not Redeemed"; 
   }
 
-  //Just copy paste the function from the documentation site.
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
   ngOnInit() {
-
-    
-
+    this.dtOptions={
+      pagingType:'full_numbers',
+      pageLength:10
+    };
     var user_id=localStorage.getItem('user_id'); 
     //load the webservice to get the user vouchers.
     this.vms_api.getUserVouchers(user_id).subscribe(data=>{
       var response=JSON.parse(JSON.stringify(data));
       if(response.http_response_code==200){
         this.vouchers=response.data;
-        this.dataSource=new MatTableDataSource(this.vouchers); 
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        this.dtTrigger.next();
       }
       else{
         this.alertClass="alert alert-danger";
@@ -103,9 +71,6 @@ export class VouchersComponent implements OnInit {
        var response=JSON.parse(JSON.stringify(data));
        if(response.http_response_code==200){
         this.vouchers=response.data; 
-        this.dataSource=new MatTableDataSource(this.vouchers);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
         this.alertClass="alert alert-success";
         this.alertMessage=response.verbose_message;
       }
@@ -126,9 +91,6 @@ export class VouchersComponent implements OnInit {
        var response=JSON.parse(JSON.stringify(data));
        if(response.http_response_code==200){
         this.vouchers=response.data; 
-        this.dataSource=new MatTableDataSource(this.vouchers);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
         this.alertClass="alert alert-success";
         this.alertMessage=response.verbose_message;
       }
@@ -155,20 +117,6 @@ export class VouchersComponent implements OnInit {
       });
   }
 
-  downloadSampleCSVFile(){
-    let sampleCSVdialog=this.dialog.open(SampleVoucherFileComponent,{
-      height: '750px',width: '700px',autoFocus: false
-    });   
-
-    sampleCSVdialog.afterClosed()
-      .subscribe(selection => {
-        console.log(selection); 
-        
-      });
-
-    //window.open(this.vms_api.webservice.toString().split("api").join("")+'storage/sample_voucher_upload.csv');   
-  }
-
   disableEnableVoucher(voucher_id,status){
     
 
@@ -177,9 +125,6 @@ export class VouchersComponent implements OnInit {
        var response=JSON.parse(JSON.stringify(data));
        if(response.http_response_code==200){
         this.vouchers=response.data; 
-        this.dataSource=new MatTableDataSource(this.vouchers);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
         this.alertClass="alert alert-success";
         this.alertMessage=response.verbose_message;
       }

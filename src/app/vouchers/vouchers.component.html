@@ -7,22 +7,71 @@
 <div class='content-right col-md-10'>
 <h1>Vouchers
     <button mat-raised-button color='primary'  style='float:right' type="button">Upload Vouchers</button>
-    <button mat-raised-button color='accent'  style='float:right;margin-right:10px' type="button">Sample File</button>
+    <button mat-raised-button color='accent' (click)="downloadSampleCSVFile()" style='float:right;margin-right:10px' type="button">Sample File</button>
 </h1><hr>
-  
 <div *ngIf="alertMessage" [ngClass]="alertClass">{{alertMessage}}</div>
-<table datatable class="row-border hover table table-striped" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
-    <thead><tr class='th-background'><th>Voucher ID</th> <th>Voucher</th><th>Validity</th><th>Redemption Status</th><th>Enable/Disable</th><th>View Details</th><th>Delete</th></tr></thead>
-    <tr *ngFor="let voucher of vouchers">
-        <td>{{voucher.voucher_id}}</td>
-        <td><span style='font-size:15px;width:100%' class='badge badge-primary'>{{voucher.coupon_code}}</span></td>
-        <td>{{voucher.validity  |  date}}</td>
-        <td><button class='btn btn-success' (click)="changeVoucherRedemption(voucher.voucher_id,0)" *ngIf="voucher.redemption_status==1" title="Redeemed"><i   class='fa fa-check'></i></button><button (click)="changeVoucherRedemption(voucher.voucher_id,1)" title="Not Redeemed" *ngIf="voucher.redemption_status==0" class='btn btn-danger'> <i   class='fa fa-times-circle'></i></button></td>
-        <td><button class='btn btn-success' (click)="disableEnableVoucher(voucher.voucher_id,0)" *ngIf="voucher.enabled==1"><i title="Enabled" class='fa fa-check'></i></button> <button class='btn btn-danger' (click)="disableEnableVoucher(voucher.voucher_id,1)" *ngIf="voucher.enabled==0"><i title="Disabled"   class='fa fa-times-circle'></i></button></td>
-        <td><button class='btn btn-info' (click)="viewEditVoucherDetails(voucher.voucher_id)"><i class='fa fa-eye'></i></button></td>
-        <td><button class='btn btn-danger' (click)="deleteVoucher(voucher.voucher_id)"><i class='fa fa-trash-o'></i></button></td>
-    </tr>
-    <tr *ngIf="!vouchers"><td colspan="6"><i class='fa fa-cog fa-spin'></i> Loading, Please wait...</td></tr>
-</table>
+
+<!-- ############################ -->
+<!-- Angular Material Starts Here -->
+<!-- ############################ -->
+<mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+      
+          <!-- ID Column -->
+          <ng-container matColumnDef="Voucher ID">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header='voucher_id'> Voucher ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.voucher_id}} </td>
+          </ng-container>
+      
+          <!-- Coupon Column -->
+          <ng-container matColumnDef="Coupon Code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header='coupon_code'> Coupon Code </th>
+            <td mat-cell *matCellDef="let row"> <span style='font-size:15px;width:70%;padding:10px;box-shadow: 0 8px 10px 1px darkgrey; cursor: pointer;' class='badge badge-info'>{{row.coupon_code}}</span> </td>
+          </ng-container>
+      
+          <!-- Validity Column -->
+          <ng-container matColumnDef="Voucher Validity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header='validity'> Voucher Validity </th>
+            <td mat-cell *matCellDef="let row"> {{row.validity | date }} </td>
+          </ng-container>
+      
+          <!-- Enabled Column -->
+          <ng-container matColumnDef="Enabled">
+            <th mat-header-cell *matHeaderCellDef > Enabled </th>
+            <td mat-cell *matCellDef="let row"> <button class='btn btn-success' (click)="disableEnableVoucher(row.voucher_id,0)" *ngIf="row.enabled==1"><i title="Enabled" class='fa fa-check'></i></button> <button class='btn btn-danger' (click)="disableEnableVoucher(row.voucher_id,1)" *ngIf="row.enabled==0"><i title="Disabled"   class='fa fa-times-circle'></i></button> </td>
+          </ng-container>
+
+
+          <!-- Redemption Column -->
+          <ng-container matColumnDef="Redemption Status">
+                <th mat-header-cell *matHeaderCellDef > Redemption Status </th>
+                <td mat-cell *matCellDef="let row"> <button class='btn btn-success' (click)="changeVoucherRedemption(row.voucher_id,0)" *ngIf="row.redemption_status==1" title="Redeemed"><i   class='fa fa-check'></i></button><button (click)="changeVoucherRedemption(row.voucher_id,1)" title="Not Redeemed" *ngIf="row.redemption_status==0" class='btn btn-danger'> <i   class='fa fa-times-circle'></i></button> </td>
+          </ng-container>
+      
+          <!-- View Column -->
+          <ng-container matColumnDef="View">
+                <th mat-header-cell *matHeaderCellDef > View </th>
+                <td mat-cell *matCellDef="let row"> <button class='btn btn-info' (click)="viewEditVoucherDetails(row.voucher_id)"><i class='fa fa-eye'></i></button> </td>
+          </ng-container>
+
+          <!-- Delete Column -->
+          <ng-container matColumnDef="Delete">
+                <th mat-header-cell *matHeaderCellDef > Delete </th>
+                <td mat-cell *matCellDef="let row"> <button class='btn btn-danger' (click)="deleteVoucher(row.voucher_id)"><i class='fa fa-trash-o'></i></button> </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+<!-- Angular Table Ends Here -->
 </div>
 

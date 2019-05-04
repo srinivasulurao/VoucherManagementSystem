@@ -19,19 +19,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //######################################################################################
 // We have to add the angular material, it is the standard UI framework for Angular.
 //######################################################################################
-import { MatDialogModule, MatNativeDateModule, MatInputModule } from '@angular/material';  
+import { MatDialogModule, MatNativeDateModule, MatInputModule, MatSortModule, MatPaginatorModule, MatCardModule } from '@angular/material';  
 import { MatButtonModule } from '@angular/material';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatSelectModule } from  '@angular/material'; 
 import { MatBadgeModule } from '@angular/material'; 
 import { MatProgressBarModule } from '@angular/material'; 
+import { MatTableModule } from '@angular/material/table';
 //######################################################################################
 //These are for the entrycomponents as a part of angular material framework.
 //######################################################################################
 
 import { DeleteWarningComponent } from './delete-warning/delete-warning.component';
 import { VoucherDetailsComponent } from './voucher-details/voucher-details.component';
-import { ProductsComponent } from './products/products.component'; 
+import { ProductsComponent } from './products/products.component';
+import { SampleVoucherFileComponent } from './sample-voucher-file/sample-voucher-file.component'; 
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ProductsComponent } from './products/products.component';
     VouchersComponent,
     DeleteWarningComponent,
     VoucherDetailsComponent,
-    ProductsComponent
+    ProductsComponent,
+    SampleVoucherFileComponent
   ],
   imports: [
     BrowserModule,
@@ -63,11 +66,16 @@ import { ProductsComponent } from './products/products.component';
     MatInputModule,
     ReactiveFormsModule,
     MatBadgeModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatCardModule
   ], 
   entryComponents:[
     DeleteWarningComponent,
-    VoucherDetailsComponent
+    VoucherDetailsComponent,
+    SampleVoucherFileComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

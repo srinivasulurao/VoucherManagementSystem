@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VmsApiService {
-  private webservice="http://localhost:81/VoucherManagementSystem/api/";
+  public webservice="http://localhost:81/VoucherManagementSystem/api/";
   public image_dir="http://localhost:81/VoucherManagementSystem/storage/app/images/";
   constructor(private http:HttpClient) { }
 
