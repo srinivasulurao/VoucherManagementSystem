@@ -4,3 +4,6 @@ nav a{
  nav{
      background:#123456 !important;
  }
+.dropdown-menu a{
+    color:#123456 !important;
+}

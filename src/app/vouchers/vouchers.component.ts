@@ -7,6 +7,7 @@ import { DeleteWarningComponent } from '../delete-warning/delete-warning.compone
 import { VoucherDetailsComponent } from '../voucher-details/voucher-details.component'; 
 import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material'; 
 import { SampleVoucherFileComponent } from '../sample-voucher-file/sample-voucher-file.component';
+import { UploadVoucherComponent } from '../upload-voucher/upload-voucher.component'; 
 
 
 export interface VoucherList {
@@ -157,7 +158,7 @@ export class VouchersComponent implements OnInit {
 
   downloadSampleCSVFile(){
     let sampleCSVdialog=this.dialog.open(SampleVoucherFileComponent,{
-      height: '750px',width: '700px',autoFocus: false
+      height: '680px',width: '700px',autoFocus: false
     });   
 
     sampleCSVdialog.afterClosed()
@@ -193,6 +194,21 @@ export class VouchersComponent implements OnInit {
       this.alertMessage="Error: "+error.message;
     });
 
+  }
+
+  uploadVouchers(){
+
+    let dialog=this.dialog.open(UploadVoucherComponent,{
+      height: '300px',width: '600px',autoFocus: false
+    }); 
+
+    // dialog.afterClosed()
+    //   .subscribe(selection => {
+    //     console.log(selection); 
+    //     if(selection==true){
+    //       alert("hello"); 
+    //     }
+    //   });
   }
 
 

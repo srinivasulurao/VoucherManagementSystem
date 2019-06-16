@@ -1,0 +1,10 @@
+<h4 mat-dialog-title>Upload CSV File</h4><mat-divider></mat-divider>
+<div [ngClass]="alertClass">{{alertMessage}}</div>
+<form method="POST" action="" class='login-form' (ngSubmit)="processCSVFile()">
+    <br>
+    <input type="file" (change)="onFileUpload($event)" style='width:100%' autocomplete="off" [(ngModel)]="csv_file" name="csv_file"  required="required" >
+    <br><br>
+    <mat-divider></mat-divider><br>
+    <button type="submit"  mat-raised-button color="primary" ><span class='button_submitting' [ngStyle]="submitting_button_style" ><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> &nbsp; Processing</span> <span [ngStyle]="upload_button_style">Submit</span></button>
+    &nbsp; <button mat-raised-button color="warn" [mat-dialog-close]="false" >CANCEL</button>
+</form>

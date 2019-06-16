@@ -41,6 +41,11 @@ export class SidebarComponent implements OnInit {
         document.querySelectorAll(".flex-column ."+active_url)[0].classList.add('active'); 
       },1000); 
       
+      if(active_url=='add-product'){
+        setTimeout(function(){
+        document.querySelectorAll(".flex-column .products")[0].classList.add('active');
+        },1000); 
+      }
   }
 
   routePage(link){

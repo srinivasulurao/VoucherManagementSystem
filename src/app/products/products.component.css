@@ -1,0 +1,11 @@
+table{
+    text-align: center !important;
+    width:100% !important;
+    }
+    
+    table th{
+        text-align: center !important; 
+        background:#123456;
+        color:white;
+    }
+ 

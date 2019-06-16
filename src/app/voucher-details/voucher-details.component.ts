@@ -42,6 +42,10 @@ export class VoucherDetailsComponent implements OnInit {
     this.showProgress=true; 
   }
 
+  productNameValidator(control:FormControl){
+
+  }
+
   setLoader(){
       this.loading_val=parseInt(this.loading_val)+2;
       if(this.loading_val==90){ 

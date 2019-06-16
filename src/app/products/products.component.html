@@ -1,3 +1,74 @@
-<p>
-  products works!
-</p>
+<app-header></app-header>
+
+<div class="left_sidebar col-md-2">
+<app-sidebar></app-sidebar>
+</div>
+
+<div class='content-right col-md-10'>
+  <h1>Products</h1>
+   <hr>
+  <div *ngIf="alertMessage" [ngClass]="alertClass">{{alertMessage}}</div>
+<!-- ############################ -->
+<!-- Angular Material Starts Here -->
+<!-- ############################ -->
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<button mat-raised-button color='primary' style='bottom:20px;position: relative;' (click)="redirectToAddNewProductPage()" style='float:right' type="button">Add Product</button>
+ 
+<div class="mat-elevation-z8">
+  
+  <table mat-table [dataSource]="dataSource" matSort>
+      
+    <!-- ID Column -->
+    <ng-container matColumnDef="Product ID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header='product_id'> Product ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.product_id}} </td>
+    </ng-container>
+
+    <!-- Product Name Column -->
+    <ng-container matColumnDef="Product Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header='product_name'> Product Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.product_name}} </td>
+    </ng-container>
+
+    <!-- Specification Column -->
+    <ng-container matColumnDef="Specification">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header='specification'> Specification </th>
+      <td mat-cell *matCellDef="let row"> {{row.specification}} </td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="Price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header='price'> Price </th>
+      <td mat-cell *matCellDef="let row"><strong style="color:steelblue"> {{row.price | currency:currency}} </strong></td>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="Quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header='quantity'> Quantity </th>
+      <td mat-cell *matCellDef="let row"> {{row.quantity}} </td>
+    </ng-container>
+   
+    <!-- View Column -->
+    <ng-container matColumnDef="View">
+          <th mat-header-cell *matHeaderCellDef > View </th>
+          <td mat-cell *matCellDef="let row"> <button class='btn btn-info' (click)="viewEditVoucherDetails(row.product_id)"><i class='fa fa-eye'></i></button> </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="Delete">
+          <th mat-header-cell *matHeaderCellDef > Delete </th>
+          <td mat-cell *matCellDef="let row"> <button class='btn btn-danger' (click)="deleteVoucher(row.product_id)"><i class='fa fa-trash-o'></i></button> </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+<!-- Angular Table Ends Here -->
+
+</div>

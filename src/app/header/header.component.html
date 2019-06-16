@@ -3,19 +3,19 @@
   
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
-    <ul class="navbar-nav mr-auto" style="float:right;margin-left:85%">
+    <ul class="navbar-nav mr-auto" style="float:right;margin-left:82%">
       <li class="nav-item active">
         <a class="nav-link" href="/about-us">About Us <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="javscript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <a class="nav-link dropdown-toggle" href="javascript:void(0)" (click)="showDropDownMenu()" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           My Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">My Profile</a>
+          <a class="dropdown-item" href="javascript:void()" (click)="navigateMyAccount()">My Account</a>
           <a class="dropdown-item" href="#">Plans</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
+          <a class="dropdown-item" (click)="LOGOUT()" href="javascript:void(0)">Logout</a>
         </div>
       </li>
       
@@ -23,3 +23,5 @@
     
   </div>
 </nav>
+
+

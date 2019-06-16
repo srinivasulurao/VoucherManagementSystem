@@ -5,10 +5,7 @@
 </div>
 
 <div class='content-right col-md-10'>
-<h1>Vouchers
-    <button mat-raised-button color='primary'  style='float:right' type="button">Upload Vouchers</button>
-    <button mat-raised-button color='accent' (click)="downloadSampleCSVFile()" style='float:right;margin-right:10px' type="button">Sample File</button>
-</h1><hr>
+<h1>Vouchers</h1><hr>
 <div *ngIf="alertMessage" [ngClass]="alertClass">{{alertMessage}}</div>
 
 <!-- ############################ -->
@@ -16,8 +13,10 @@
 <!-- ############################ -->
 <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
-      
+</mat-form-field>
+<button mat-raised-button color='primary'  (click)="uploadVouchers()" style='float:right' type="button">Upload Vouchers</button>
+<button mat-raised-button color='accent' (click)="downloadSampleCSVFile()" style='float:right;margin-right:10px' type="button">Sample File</button>
+
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
       
@@ -70,7 +69,7 @@
           </tr>
         </table>
       
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" showFirstLastButtons></mat-paginator>
       </div>
 <!-- Angular Table Ends Here -->
 </div>

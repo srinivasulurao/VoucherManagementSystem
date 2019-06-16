@@ -5,12 +5,12 @@
    <form method="POST" action="" class='login-form' (ngSubmit)="AttemptLogin()">
       <h2 mat-dialog-title>Member Login</h2>
       <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput type="text" autocomplete="off" [(ngModel)]="user_email" name="user_email"   >
-  </mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="text" autocomplete="off" [(ngModel)]="user_email" name="user_email"   >
+      </mat-form-field>
     <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput type="password" autocomplete="off" [(ngModel)]="user_password" name="user_password"   >
+          <mat-label>Password</mat-label>
+          <input matInput type="password" autocomplete="off" [(ngModel)]="user_password" name="user_password"   >
     </mat-form-field>
       <button type="submit" class='btn btn-info login-button'><span class='button_submitting' [ngStyle]="button_submitting_style"><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> &nbsp; Submitting</span> <span [ngStyle]="login_button_style">Log In </span></button>
     <div class='login_additional_tasks'>

@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //######################################################################################
 // We have to add the angular material, it is the standard UI framework for Angular.
 //######################################################################################
-import { MatDialogModule, MatNativeDateModule, MatInputModule, MatSortModule, MatPaginatorModule, MatCardModule } from '@angular/material';  
+import { MatDialogModule, MatNativeDateModule, MatInputModule, MatSortModule, MatPaginatorModule, MatCardModule, MatDividerModule} from '@angular/material';  
 import { MatButtonModule } from '@angular/material';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatSelectModule } from  '@angular/material'; 
@@ -33,7 +33,10 @@ import { MatTableModule } from '@angular/material/table';
 import { DeleteWarningComponent } from './delete-warning/delete-warning.component';
 import { VoucherDetailsComponent } from './voucher-details/voucher-details.component';
 import { ProductsComponent } from './products/products.component';
-import { SampleVoucherFileComponent } from './sample-voucher-file/sample-voucher-file.component'; 
+import { SampleVoucherFileComponent } from './sample-voucher-file/sample-voucher-file.component';
+import { UploadVoucherComponent } from './upload-voucher/upload-voucher.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AddProductComponent } from './add-product/add-product.component'; 
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { SampleVoucherFileComponent } from './sample-voucher-file/sample-voucher
     DeleteWarningComponent,
     VoucherDetailsComponent,
     ProductsComponent,
-    SampleVoucherFileComponent
+    SampleVoucherFileComponent,
+    UploadVoucherComponent,
+    MyProfileComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -70,12 +76,14 @@ import { SampleVoucherFileComponent } from './sample-voucher-file/sample-voucher
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ], 
   entryComponents:[
     DeleteWarningComponent,
     VoucherDetailsComponent,
-    SampleVoucherFileComponent
+    SampleVoucherFileComponent,
+    UploadVoucherComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

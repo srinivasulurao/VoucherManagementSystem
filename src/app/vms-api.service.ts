@@ -93,6 +93,24 @@ export class VmsApiService {
     return this.http.post(this.webservice+'submit-voucher-details',postParams);
   }
 
+  uploadVoucherCSVFile(user_id, csv_file){
+     let postParams=new FormData();
+     postParams.append('user_id',user_id); 
+     postParams.append('voucher_csv',csv_file);
+     return this.http.post(this.webservice+"upload-vouchers",postParams); 
+  }
+
+  addNewProduct(user_id,product_name,specification, specification_options, price, quanity){
+    let postParams=new FormData(); 
+    postParams.append('user_id',user_id);
+    postParams.append('price',price);
+    postParams.append('product_name',product_name);
+    postParams.append('specification',specification);
+    postParams.append('specification_options',specification_options); 
+    postParams.append('quantity',quanity);
+    return this.http.post(this.webservice+'add-new-product',postParams);
+  }
+
 
 
 }//Service Class ends here.
