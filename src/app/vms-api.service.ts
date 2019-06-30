@@ -65,6 +65,13 @@ export class VmsApiService {
     return this.http.post(this.webservice+"get-company-products",postParams);
   }
 
+  loadProductData(user_id,product_id){
+    let postParams=new FormData();   
+    postParams.append('user_id',user_id);
+    postParams.append('product_id',product_id); 
+    return this.http.post(this.webservice+"get-product-details",postParams);
+  }
+
   updateVoucherDetails(user_id, voucher_id, voucher_validity, product_linked, redemption_status, enabled, created_on, redeemed_on, notes){
 
     var rs=(redemption_status=='yes')?1:0;

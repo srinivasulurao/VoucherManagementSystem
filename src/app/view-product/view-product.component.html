@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="left_sidebar col-md-2">
+<app-sidebar></app-sidebar>
+</div>
+
+<div class='content-right col-md-10'>
+  <h1>View Product Details</h1><hr>
+  <div class='{{alertClass}}' *ngIf="alertMsg">{{alertMsg}}</div>
+  
+  <form method="POST" action="" class='login-form' (ngSubmit)="saveProduct()">
+      <mat-form-field>
+          <mat-label>Product Name</mat-label>
+          <input matInput type="text" autocomplete="off" [(ngModel)]="product_name" name="product_name"  [formControl]="ProductNameControl" >
+          <mat-error>This value is required !</mat-error> 
+      </mat-form-field><br>
+    <mat-form-field>
+          <mat-label>Specification</mat-label>
+          <input matInput type="text" autocomplete="off" [(ngModel)]="specification" name="specification"  [formControl]="SpecificationControl" >
+          <mat-error>This value is required !</mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <mat-label>Specification Option</mat-label>
+      <textarea matInput rows="5" [(ngModel)]="specification_options" name="specification_options" [formControl]="SpecificationOptionsControl"></textarea>
+      <mat-error>This value is required !</mat-error>
+      <mat-hint>Example: <i style='color:teal'>Color:red,blue,black|Size:10,11,12|Type:soft,hard</i></mat-hint>
+    </mat-form-field><br><br>
+
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput type="float" autocomplete="off" [(ngModel)]="price" name="price"  [formControl]="PriceControl"  >
+        <mat-error>This value is required !</mat-error>
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" min="0" autocomplete="off" [(ngModel)]="quantity" name="quantity"   [formControl]="QuantityControl" >
+        <mat-error>This value is required !</mat-error>
+    </mat-form-field><br><br>
+
+      <button type="submit" class='btn btn-info login-button'><span class='button_submitting' [ngStyle]="button_submitting_style"><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> &nbsp; Please wait..</span> <span [ngStyle]="submit_button_style">Submit </span></button>
+    
+    </form>
+</div>

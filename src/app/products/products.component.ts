@@ -53,9 +53,12 @@ export class ProductsComponent implements OnInit {
     }); 
 
   }
+  redirectViewProduct(product_id){
+    this.router.navigateByUrl('products/view-product/'+product_id); 
+  }
 
   redirectToAddNewProductPage(){
-    this.router.navigateByUrl('/add-product'); 
+    this.router.navigateByUrl('products/add-product'); 
   }
 
 }

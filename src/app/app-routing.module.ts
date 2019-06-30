@@ -9,6 +9,7 @@ import { VouchersComponent } from "./vouchers/vouchers.component";
 import { MyProfileComponent } from "./my-profile/my-profile.component";
 import { ProductsComponent } from "./products/products.component";
 import { AddProductComponent } from "./add-product/add-product.component";
+import { ViewProductComponent } from "./view-product/view-product.component";
 
 const routes: Routes=[
     {path:"",component:HomePageComponent}, //Or you can go for redirect component with redirectTo and pathMatch parameter.
@@ -18,7 +19,8 @@ const routes: Routes=[
     {path:"vouchers-list",component:VouchersComponent}, 
     {path:"products",component:ProductsComponent},
     {path:"my-account",component:MyProfileComponent},
-    {path:'add-product',component:AddProductComponent},
+    {path:'products/add-product',component:AddProductComponent},
+    {path:'products/view-product/:id',component:ViewProductComponent}, 
     {path:"**", component:PageNotFoundComponent}
 ];
 

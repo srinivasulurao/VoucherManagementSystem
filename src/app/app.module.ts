@@ -36,7 +36,8 @@ import { ProductsComponent } from './products/products.component';
 import { SampleVoucherFileComponent } from './sample-voucher-file/sample-voucher-file.component';
 import { UploadVoucherComponent } from './upload-voucher/upload-voucher.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { AddProductComponent } from './add-product/add-product.component'; 
+import { AddProductComponent } from './add-product/add-product.component';
+import { ViewProductComponent } from './view-product/view-product.component'; 
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     SampleVoucherFileComponent,
     UploadVoucherComponent,
     MyProfileComponent,
-    AddProductComponent
+    AddProductComponent,
+    ViewProductComponent
   ],
   imports: [
     BrowserModule,
