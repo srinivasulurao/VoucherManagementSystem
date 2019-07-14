@@ -60,9 +60,9 @@ export class ViewProductComponent implements OnInit {
    }
    else{
     this.button_submitting_style={"display":"block"};
-    this.submit_button_style={display:"none"};
+    this.submit_button_style={display:"none"}; 
 
-    this.vms_api.addNewProduct(localStorage.getItem('user_id'), this.ProductNameControl.value,this.SpecificationControl.value, this.SpecificationOptionsControl.value, this.PriceControl.value, this.QuantityControl.value).subscribe(data=>{
+    this.vms_api.editProduct(localStorage.getItem('user_id'),this.product_id, this.ProductNameControl.value,this.SpecificationControl.value, this.SpecificationOptionsControl.value, this.PriceControl.value, this.QuantityControl.value).subscribe(data=>{
             var response=JSON.parse(JSON.stringify(data)); 
             if(response.http_response_code==200){
             this.alertClass="alert alert-success";
