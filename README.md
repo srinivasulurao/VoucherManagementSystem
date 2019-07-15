@@ -1,6 +1,6 @@
 # VoucherManagementSystem
 
-This project is voucher redemption platform, using this platform store owners can distribute the vouchers to their customers to sell their products.
+This project is an ultimate voucher redemption platform for small to big business owners, using this platform store owners can distribute the vouchers to their customers to sell their products.
 
 **How It Works**
 
