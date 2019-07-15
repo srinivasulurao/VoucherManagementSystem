@@ -1,27 +1,24 @@
 # VoucherManagementSystem
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+This project is voucher redemption platform, using this platform store owners can distribute the vouchers to their customers to sell their products.
 
-## Development server
+**How It Works**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Store owner need to register to the platform <br>
+Store owners need to add product and its details with possible specifications of the product into the system<br>
+Store need to upload vouchers into the system, each voucher should be linked to a particular product<br>
+Store owner will give this code to their clients, if they are interested to buy any particular product.
+Our platform will generate a javascript code, which the store owner can ember into their site.
+The customer will come to the page where the code is embed, the embed code is basically a FORM where the customer can add his vouchers.
+Once the customer adds the voucher in the form textbox, our system will pull the corresponding product details linked to the voucher.
+The form will immeditately turn into a e-commerce cart, where he can complete the order.
+The store owner will get the order details into our system and he needs to deliver the product to the customer to his address.
 
-## Code scaffolding
+THAT's IT, SO SIMPLE.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# About the project
+Created by N.Srinivasulu Rao (n.srinivasulurao@gmail.com), PROJECT is in development mode and will be live very soon.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
