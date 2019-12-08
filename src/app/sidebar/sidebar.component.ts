@@ -38,12 +38,16 @@ export class SidebarComponent implements OnInit {
      //get the current link
       var active_url=this.router.url.split("/").join("");
       setTimeout(function(){
-        document.querySelectorAll(".flex-column ."+active_url)[0].classList.add('active'); 
+        if(document.querySelectorAll(".flex-column ."+active_url).length > 0){
+         document.querySelectorAll(".flex-column ."+active_url)[0].classList.add('active'); 
+        }
       },1000); 
       
       if(active_url=='add-product'){
         setTimeout(function(){
-        document.querySelectorAll(".flex-column .products")[0].classList.add('active');
+          if(document.querySelectorAll(".flex-column .products").length > 0){
+           document.querySelectorAll(".flex-column .products")[0].classList.add('active');
+          }
         },1000); 
       }
   }

@@ -15,17 +15,22 @@ export class ViewProductComponent implements OnInit {
   public SpecificationOptionsControl=new FormControl('', Validators.required);
   public PriceControl=new FormControl('', Validators.required);
   public QuantityControl=new FormControl('', Validators.required);
+  public ProductImages=new FormControl('',Validators.required);
   public alertClass:any;
   public alertMsg:any; 
   public button_submitting_style:any;
   public submit_button_style:any;
   public product_id:any;
+  public product_image:any; 
+  public product_image_path:any; 
+  public image_input_added:boolean;
 
   constructor(private vms_api:VmsApiService, private router:Router, private activated_route:ActivatedRoute) {
     this.alertClass="";
     this.alertMsg=""; 
     this.button_submitting_style={"display":"none"};
     this.submit_button_style={display:"block"}; 
+    this.image_input_added=false;
    }
 
   ngOnInit() {
@@ -40,6 +45,7 @@ export class ViewProductComponent implements OnInit {
         this.SpecificationOptionsControl.setValue(result.data.specification_options);
         this.PriceControl.setValue(result.data.price);
         this.QuantityControl.setValue(result.data.quantity); 
+        this.product_image_path=this.vms_api.image_dir+"product_images/"+result.data.product_image; 
        }
        else{
         this.alertClass="alert alert-danger";
@@ -53,6 +59,11 @@ export class ViewProductComponent implements OnInit {
     
   }
 
+  ProductImageUpload(image_info){
+    this.product_image=image_info.target.files[0];
+    this.image_input_added=true; 
+  }
+
   saveProduct(){
 
     if(this.ProductNameControl.hasError('required') || this.SpecificationOptionsControl.hasError('required') || this.SpecificationOptionsControl.hasError('required') || this.PriceControl.hasError('required') || this.QuantityControl.hasError('required')){
@@ -62,7 +73,7 @@ export class ViewProductComponent implements OnInit {
     this.button_submitting_style={"display":"block"};
     this.submit_button_style={display:"none"}; 
 
-    this.vms_api.editProduct(localStorage.getItem('user_id'),this.product_id, this.ProductNameControl.value,this.SpecificationControl.value, this.SpecificationOptionsControl.value, this.PriceControl.value, this.QuantityControl.value).subscribe(data=>{
+    this.vms_api.editProduct(localStorage.getItem('user_id'),this.product_id, this.ProductNameControl.value,this.SpecificationControl.value, this.SpecificationOptionsControl.value, this.PriceControl.value, this.QuantityControl.value,this.product_image).subscribe(data=>{
             var response=JSON.parse(JSON.stringify(data)); 
             if(response.http_response_code==200){
             this.alertClass="alert alert-success";

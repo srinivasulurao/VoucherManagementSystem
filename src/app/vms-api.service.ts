@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class VmsApiService {
   public webservice="http://localhost:81/VoucherManagementSystem/api/";
-  public image_dir="http://localhost:81/VoucherManagementSystem/storage/app/images/";
+  public image_dir="http://localhost:81/VoucherManagementSystem/storage/";
   constructor(private http:HttpClient) { }
 
   AttemptLogin(email,password){
@@ -107,7 +107,7 @@ export class VmsApiService {
      return this.http.post(this.webservice+"upload-vouchers",postParams); 
   }
 
-  addNewProduct(user_id,product_name,specification, specification_options, price, quanity){
+  addNewProduct(user_id,product_name,specification, specification_options, price, quanity, product_image){
     let postParams=new FormData(); 
     postParams.append('user_id',user_id);
     postParams.append('price',price);
@@ -115,10 +115,11 @@ export class VmsApiService {
     postParams.append('specification',specification);
     postParams.append('specification_options',specification_options); 
     postParams.append('quantity',quanity);
+    postParams.append('product_image', product_image); 
     return this.http.post(this.webservice+'add-new-product',postParams);
   }
 
-  editProduct(user_id,product_id,product_name,specification, specification_options, price, quanity){
+  editProduct(user_id,product_id,product_name,specification, specification_options, price, quanity, product_image){
     let postParams=new FormData(); 
     postParams.append('user_id',user_id); 
     postParams.append('price',price);
@@ -127,7 +128,19 @@ export class VmsApiService {
     postParams.append('specification',specification);
     postParams.append('specification_options',specification_options); 
     postParams.append('quantity',quanity);
+    postParams.append('product_image',product_image); 
     return this.http.post(this.webservice+'update-product-details',postParams); 
+  }
+
+  getUserDetails(user_id){
+    let postParams=new FormData();
+    postParams.append('user_id',user_id);
+    return this.http.post(this.webservice+"get-user-details",postParams);   
+  }
+
+  getAllPlans(){
+    let postParams=new FormData();
+     return this.http.post(this.webservice+"get-all-plans", postParams); //No Parameters required.
   }
 
 

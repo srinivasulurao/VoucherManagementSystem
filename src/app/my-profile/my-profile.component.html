@@ -8,5 +8,42 @@
 <h1>My Account
 </h1><hr>
 <div *ngIf="alertMessage" [ngClass]="alertClass">{{alertMessage}}</div>
+<form method="post" action="" (ngSubmit)="SaveAccountDetails" (ngSubmit)="saveProfileDetails()">
 
+    <mat-form-field>
+        <mat-label>Company Name</mat-label>
+        <input matInput type="text" name="company_name" [formControl]="CompanyNameControl" >
+        <mat-error>This value is required !</mat-error>
+    </mat-form-field> <br>
+
+    <mat-form-field>
+        <mat-label>Company Email</mat-label>
+        <input matInput type="text" [formControl]="CompanyEmailControl" >
+        <mat-error>This value is required !</mat-error>
+    </mat-form-field> <br>
+
+    <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <mat-select [formControl]="CurrencyControl"> 
+            <mat-option *ngFor="let currency of CurrencyList" value="{{currency}}">{{currency}}</mat-option>
+            </mat-select>
+        <mat-error>This value is required !</mat-error>
+    </mat-form-field>
+<br>
+    <mat-form-field>
+        <mat-label>Opted Plan</mat-label>
+        <mat-select [formControl]="PlanControl" [disabled]="true"> 
+            <mat-option *ngFor="let plan of plans" value="plan_{{plan.plan_id}}">{{plan.plan_name}}</mat-option> 
+            </mat-select>
+        <mat-error>This value is required !</mat-error>
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+        <mat-label>Company Logo</mat-label>
+        <img src="{{user.company_logo}}">
+    </mat-form-field> -->
+<br>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+
+</form>
 </div>

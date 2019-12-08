@@ -39,6 +39,11 @@
         <mat-error>This value is required !</mat-error>
     </mat-form-field><br><br>
 
+    <small>Product Image</small> <!--Just one product image as of now, we may modify it in future. -->
+    <input type="file" id="input-product-images" (change)="ProductImageUpload($event)" [formControl]="ProductImages" style='width:100%' autocomplete="off" name="product_image" >
+    <!-- <img *ngIf="image_input_added==false" src={{product_image_path}} style="width:50px;"> -->
+    <br><br>
+
       <button type="submit" class='btn btn-info login-button'><span class='button_submitting' [ngStyle]="button_submitting_style"><i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> &nbsp; Please wait..</span> <span [ngStyle]="submit_button_style">Submit </span></button>
     
     </form>

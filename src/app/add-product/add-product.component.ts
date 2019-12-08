@@ -19,6 +19,8 @@ export class AddProductComponent implements OnInit {
   public alertMsg:any; 
   public button_submitting_style:any;
   public submit_button_style:any;
+  public product_image:any;
+  public image_input_added:any;
 
   constructor(private vms_api:VmsApiService, private router:Router) {
     this.alertClass="";
@@ -36,6 +38,11 @@ export class AddProductComponent implements OnInit {
   ngOnInit() {
   }
 
+  ProductImageUpload(image_info){
+    this.product_image=image_info.target.files[0];
+    this.image_input_added=true; 
+  }
+
   addProduct(){
 
     if(this.ProductNameControl.hasError('required') || this.SpecificationOptionsControl.hasError('required') || this.SpecificationOptionsControl.hasError('required') || this.PriceControl.hasError('required') || this.QuantityControl.hasError('required')){
@@ -44,7 +51,7 @@ export class AddProductComponent implements OnInit {
    else{
     this.button_submitting_style={"display":"block"};
     this.submit_button_style={display:"none"};
-   this.vms_api.addNewProduct(localStorage.getItem('user_id'), this.ProductNameControl.value,this.SpecificationControl.value, this.SpecificationOptionsControl.value, this.PriceControl.value, this.QuantityControl.value).subscribe(data=>{
+   this.vms_api.addNewProduct(localStorage.getItem('user_id'), this.ProductNameControl.value,this.SpecificationControl.value, this.SpecificationOptionsControl.value, this.PriceControl.value, this.QuantityControl.value, this.product_image).subscribe(data=>{
       var response=JSON.parse(JSON.stringify(data)); 
       if(response.http_response_code==200){
       this.alertClass="alert alert-success";
