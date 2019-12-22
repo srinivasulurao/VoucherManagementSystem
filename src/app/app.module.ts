@@ -26,6 +26,7 @@ import { MatSelectModule } from  '@angular/material';
 import { MatBadgeModule } from '@angular/material'; 
 import { MatProgressBarModule } from '@angular/material'; 
 import { MatTableModule } from '@angular/material/table';
+
 //######################################################################################
 //These are for the entrycomponents as a part of angular material framework.
 //######################################################################################
