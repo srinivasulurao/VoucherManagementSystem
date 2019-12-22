@@ -5,31 +5,36 @@
 </div>
 
 <div class='content-right col-md-10'>
-<h1>My Account
-</h1><hr>
+<h1>Account Details</h1><hr>
 <div *ngIf="alertMessage" [ngClass]="alertClass">{{alertMessage}}</div>
-<form method="post" action="" (ngSubmit)="SaveAccountDetails" (ngSubmit)="saveProfileDetails()">
+<form method="post" action="" (ngSubmit)="SaveAccountDetails" (ngSubmit)="SaveProfileDetails()">
 
     <mat-form-field>
         <mat-label>Company Name</mat-label>
         <input matInput type="text" name="company_name" [formControl]="CompanyNameControl" >
         <mat-error>This value is required !</mat-error>
-    </mat-form-field> <br>
+    </mat-form-field> <br> 
 
-    <mat-form-field>
-        <mat-label>Company Email</mat-label>
-        <input matInput type="text" [formControl]="CompanyEmailControl" >
+   <mat-form-field>
+        <mat-label>Company Email/Username</mat-label>
+        <input matInput type="email" [formControl]="CompanyEmailControl" >
         <mat-error>This value is required !</mat-error>
     </mat-form-field> <br>
 
+   <mat-form-field>
+       <mat-label>Paypal Email Address</mat-label>
+       <input matInput type="email" [formControl]="PayPalEmailControl">
+       <mat-error>Paypal Address is required for payment details !</mat-error>
+   </mat-form-field><br>
+  
     <mat-form-field>
         <mat-label>Currency</mat-label>
         <mat-select [formControl]="CurrencyControl"> 
             <mat-option *ngFor="let currency of CurrencyList" value="{{currency}}">{{currency}}</mat-option>
             </mat-select>
         <mat-error>This value is required !</mat-error>
-    </mat-form-field>
-<br>
+    </mat-form-field><br>
+
     <mat-form-field>
         <mat-label>Opted Plan</mat-label>
         <mat-select [formControl]="PlanControl" [disabled]="true"> 
@@ -38,12 +43,15 @@
         <mat-error>This value is required !</mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <!-- <mat-form-field>
         <mat-label>Company Logo</mat-label>
-        
-    </mat-form-field>
+    </mat-form-field><br> -->
 <br>
-    <button type="submit" mat-raised-button color="primary">Submit</button>
+<h6>Company Logo</h6>
+<img src="{{company_logo}}" style='height:200px;box-shadow: 0 0 10px;border-radius: 10px;' ><br><br>
+<input type="file" (change)="CompanyImageUpload($event)" ><br><br>
+
+    <button type="submit" mat-raised-button color="primary" >{{button_text}}</button>
 
 </form>
 </div>
