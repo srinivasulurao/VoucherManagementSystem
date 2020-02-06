@@ -31,6 +31,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  navigateRegistrationPage(){
+    this.router.navigateByUrl("/register"); 
+  }
+
   AttemptLogin(){
     this.button_submitting_style={"display":"inline-block"};
     this.login_button_style={"display":"none"};

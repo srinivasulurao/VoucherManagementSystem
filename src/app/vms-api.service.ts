@@ -5,8 +5,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VmsApiService {
-  public webservice="http://localhost:81/VoucherManagementSystem/api/";
-  public image_dir="http://localhost:81/VoucherManagementSystem/storage/";
+  public webservice="http://localhost/VoucherManagementSystem/api/";  //current Configured webservice url.
+  public image_dir="http://localhost/VoucherManagementSystem/storage/"; 
+  public paypal_client_id="AcogR0-JeqxZU5gvKdMnwvGtm34NbtCrgIAAhZjb3oTbiBAxP5G6Bwi8O4IuSfp5q0BjyaMrgzNzPJIE";
   constructor(private http:HttpClient) { }
 
   AttemptLogin(email,password){
@@ -143,6 +144,39 @@ export class VmsApiService {
      return this.http.post(this.webservice+"get-all-plans", postParams); //No Parameters required.
   }
 
+  SaveCompanyProfileDetails(user_id, company_name, company_email, paypal_email, currency, opted_plan, company_logo){
+     let postParams=new FormData();
+     postParams.append('company_email', company_email);
+     postParams.append('company_name',company_name);
+     postParams.append('paypal_email',paypal_email);
+     postParams.append('currency',currency);
+     postParams.append('opted_plan',opted_plan);
+     postParams.append('company_logo',company_logo);
+     postParams.append('user_id',user_id); 
+     return this.http.post(this.webservice+"save-profile-details",postParams);
+  }
+
+  checkDuplicateAccount(email){
+    let postParams=new FormData();
+    postParams.append('email',email);
+    return this.http.post(this.webservice+"check-duplicate-account",postParams); 
+  }
+
+  BeginCompanyRegistration(company_name,company_email,company_pass,phone_no, currency, opted_plan, company_logo, payment_transaction_details){
+    let postParams=new FormData();
+    postParams.append('email',company_email);
+    postParams.append('phone_no',phone_no); 
+    postParams.append('company_name', company_name); 
+    postParams.append('currency',currency);
+    postParams.append('password', company_pass);
+    postParams.append('opted_plan', opted_plan);
+    postParams.append('company_logo',company_logo); 
+    postParams.append('transaction_details',JSON.stringify(payment_transaction_details)); 
+    postParams.append('status',payment_transaction_details.status);
+    postParams.append('transaction_id',payment_transaction_details.id); 
+
+    return this.http.post(this.webservice+"register-company", postParams); // Registration web service called here.
+  }
 
 
 }//Service Class ends here.

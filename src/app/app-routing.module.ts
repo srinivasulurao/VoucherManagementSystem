@@ -10,10 +10,12 @@ import { MyProfileComponent } from "./my-profile/my-profile.component";
 import { ProductsComponent } from "./products/products.component";
 import { AddProductComponent } from "./add-product/add-product.component";
 import { ViewProductComponent } from "./view-product/view-product.component";
+import { RegisterComponent } from "./register/register.component";
 
 const routes: Routes=[
     {path:"",component:HomePageComponent}, //Or you can go for redirect component with redirectTo and pathMatch parameter.
     {path:"login",component:LoginComponent},
+    {path:"register",component:RegisterComponent},
     {path:"dashboard",component:DashboardComponent},
     {path:"change-password",component:ChangePasswordComponent},
     {path:"vouchers-list",component:VouchersComponent}, 

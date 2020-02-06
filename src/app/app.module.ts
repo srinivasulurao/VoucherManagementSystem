@@ -26,6 +26,7 @@ import { MatSelectModule } from  '@angular/material';
 import { MatBadgeModule } from '@angular/material'; 
 import { MatProgressBarModule } from '@angular/material'; 
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material'; 
 
 //######################################################################################
 //These are for the entrycomponents as a part of angular material framework.
@@ -38,7 +39,8 @@ import { SampleVoucherFileComponent } from './sample-voucher-file/sample-voucher
 import { UploadVoucherComponent } from './upload-voucher/upload-voucher.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { ViewProductComponent } from './view-product/view-product.component'; 
+import { ViewProductComponent } from './view-product/view-product.component';
+import { RegisterComponent } from './register/register.component'; 
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { ViewProductComponent } from './view-product/view-product.component';
     UploadVoucherComponent,
     MyProfileComponent,
     AddProductComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ import { ViewProductComponent } from './view-product/view-product.component';
     MatSortModule,
     MatPaginatorModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule
   ], 
   entryComponents:[
     DeleteWarningComponent,

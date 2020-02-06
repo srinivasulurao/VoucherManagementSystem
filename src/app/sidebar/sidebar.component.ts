@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
     this.company_name=localStorage.getItem('company_name'); 
 
     //Set the sticky left bar, screen height.
-    this.sticky_sidebar_style={"min-height":(screen.height-83)+"px"}; 
+    this.sticky_sidebar_style={"min-height":(screen.height-10)+"px"}; 
    }
 
   ngOnInit() {

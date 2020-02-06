@@ -1,0 +1,83 @@
+<div class='scenery-background' [ngStyle]='scenery_background'>
+  <div class='container'>
+    <div [ngClass]='alertClass'>{{alertMessage}}</div>
+    <div class='login-form'>
+      <h4>Register Here</h4>
+      <form method="POST" action="" (ngSubmit)="ValidateAndEnablePaymentButton()">
+
+        <span *ngIf="RegistrationSuccessful==false">
+                <mat-form-field>
+                  <mat-label>Company Name</mat-label>
+                  <input type="text" matInput [formControl]="CompanyNameControl">
+                  <mat-error>Company Name is required !</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Email Address</mat-label>
+                  <input type="email" matInput  autocomplete="off" [formControl]="EmailControl">
+                  <mat-error>Please enter a unique and valid email address !</mat-error> 
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Company Phone</mat-label>
+                  <input type="tel" matInput  autocomplete="off" [formControl]="PhoneControl" maxlength="10"> 
+                  <mat-error>Please enter a 10 digit mobile number !</mat-error> 
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput  autocomplete="off" [formControl]="PasswordControl">
+                  <mat-error>Password is required !</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Confirm Password</mat-label>
+                  <input type="password" matInput  [formControl]="ConfirmPasswordControl">
+                  <mat-error>Confirm Password is required !</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Plan</mat-label>
+                  <mat-select [formControl]="PlanControl" (change)="changePlanButton">
+                    <mat-option value="">--- Choose Appropriate Plan ---</mat-option>
+                    <mat-option *ngFor="let plan of plans" value="{{plan.plan_id}}">{{plan.plan_name}} ({{plan.coupon_limit}} coupons for ${{plan.plan_price}} )</mat-option>
+                  </mat-select>
+                  <mat-error>You must choose a plan to proceed !</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Currency</mat-label>
+                  <mat-select [formControl]="CurrencyControl">
+                    <mat-option value="">--- Select Currency ---</mat-option>
+                    <mat-option *ngFor="let currency of CurrencyList" value="{{currency}}">{{currency}}</mat-option>
+                  </mat-select>
+                  <mat-error>Please select your usual transaction currency.</mat-error>
+                </mat-form-field>
+
+                <label style="font-size:12px;margin-bottom: 0px;">Company Logo</label><br>
+                <input type="file" name="company_logo" id="company_logo" [(ngModel)]="company_logo" (change)="uploadCompanyLogo($event)">
+                <mat-error style="font-size: 75%;" *ngIf="logo_error">Company Logo is required !</mat-error><br><br>
+
+                <mat-checkbox value="yes" [formControl]="TermsConditionsControl" (change)="termsConditionChange($event)">Accept Terms & Conditions.</mat-checkbox>
+                <mat-error style="font-size:75%" *ngIf="terms_error">Select the terms and conditions checkbox.</mat-error><br><br>
+
+                <button matInput mat-raised-button color="primary" style="margin-bottom:10px">Proceed</button>
+
+        </span>
+
+        <span *ngIf="RegistrationSuccessful==true" style="text-align: center;display: block !important;margin: auto;padding-top: 150px"><img style="display: block;margin:auto" src='../../assets/img/transaction_successful.gif'> Registration Successfull !<br>
+        Thank you for choosing us, click <a href='javascript:void(0)' (click)="redirectLogin()" style="text-decoration: underline;">here</a> to login.
+        </span>
+        <!-- <button type="submit" class="btn btn-info">Submit</button> -->
+        <div id='paypal_button' [ngStyle]="SubmitButtonStyle"></div>
+
+        
+        
+      </form>
+
+      
+      
+
+    </div>
+  </div> <!-- Container ends here. -->
+</div>

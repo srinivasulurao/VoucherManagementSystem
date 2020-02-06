@@ -7,7 +7,7 @@
 <div class='content-right col-md-10'>
 <h1>Account Details</h1><hr>
 <div *ngIf="alertMessage" [ngClass]="alertClass">{{alertMessage}}</div>
-<form method="post" action="" (ngSubmit)="SaveAccountDetails" (ngSubmit)="SaveProfileDetails()">
+<form method="post" action="" (ngSubmit)="SaveAccountDetails" (ngSubmit)="SaveProfileDetails()" style="display: inline-block;width:600px">
 
     <mat-form-field>
         <mat-label>Company Name</mat-label>
@@ -51,7 +51,14 @@
 <img src="{{company_logo}}" style='height:200px;box-shadow: 0 0 10px;border-radius: 10px;' ><br><br>
 <input type="file" (change)="CompanyImageUpload($event)" ><br><br>
 
-    <button type="submit" mat-raised-button color="primary" >{{button_text}}</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="button_disabled">{{button_text}}</button>
 
 </form>
+
+<div style="width: 400px;display: inline-block;vertical-align: top;padding: 10px 30px;background: lightgrey;margin-left: 30px;border-radius: 4px;" class="well">
+   <label style="display:block"><span style='width:120px;display:inline-block;'>Account Created </span>: {{account_created}}</label>
+   <label style="display:block"><span style='width:120px;display:inline-block;'>Last Login </span>: {{last_login}}</label>
+   <label style="display:block"><span style='width:120px;display:inline-block;'>Account Status </span>: <span ngClass={{account_status_badge}} >{{account_status}}</span></label>
+   <label style="display:block"><span style='width:120px;display:inline-block;'>Account Validity </span>: {{account_validity}}</label>
+</div>
 </div>
