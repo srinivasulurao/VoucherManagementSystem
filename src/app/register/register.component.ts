@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { VmsApiService } from '../vms-api.service';
 import { FormControl, Validators } from '@angular/forms';
 import { emailValidate } from '../app.validators';
 import { Router } from '@angular/router';
+
+declare var paypal;
 
 @Component({
   selector: 'app-register',
@@ -10,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+   @ViewChild('paypal') paypalElement:ElementRef;
 
   public plans:any;
   public plansArray:any;
@@ -109,15 +112,12 @@ ValidateAndEnablePaymentButton(){
 
   ngOnInit() {
     this.listAllPlans();
-  }
-
-  ngAfterViewInit(): void {
-    
+ 
     var instance=this;
     this.loadExternalScript("https://www.paypal.com/sdk/js?client-id="+this.vms_api.paypal_client_id).then(() => {
       paypal.Buttons({
         createOrder: function(data, actions) {
-          var plan_cost=this.plansArray[this.PlanControl.value];
+          var plan_cost=instance.plansArray[instance.PlanControl.value];
           return actions.order.create({
             purchase_units: [{
               amount: {
@@ -135,8 +135,8 @@ ValidateAndEnablePaymentButton(){
             
           });
         }
-      }).render('#paypal_button');
-    });
+      }).render(this.paypalElement.nativeElement);
+    }); 
     
   } // Function ends here.
 

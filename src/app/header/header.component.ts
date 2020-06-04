@@ -27,6 +27,10 @@ public app_name:string;
     });
   }
 
+  redirectTo(page){
+    this.router.navigateByUrl("/"+page); 
+  }
+
   navigateMyAccount(){
     this.router.navigateByUrl('/my-account'); 
   }

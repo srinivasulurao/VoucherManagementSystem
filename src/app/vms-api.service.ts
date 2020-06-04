@@ -5,8 +5,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VmsApiService {
-  public webservice="http://localhost/VoucherManagementSystem/api/";  //current Configured webservice url.
-  public image_dir="http://localhost/VoucherManagementSystem/storage/"; 
+  public webservice="http://localhost:81/VoucherManagementSystem/api/";  //current Configured webservice url.
+  public image_dir="http://localhost:81/VoucherManagementSystem/storage/"; 
+  public cart_url="http://localhost:81/VoucherManagementSystem/view-cart/";
   public paypal_client_id="AcogR0-JeqxZU5gvKdMnwvGtm34NbtCrgIAAhZjb3oTbiBAxP5G6Bwi8O4IuSfp5q0BjyaMrgzNzPJIE";
   constructor(private http:HttpClient) { }
 
@@ -160,6 +161,12 @@ export class VmsApiService {
     let postParams=new FormData();
     postParams.append('email',email);
     return this.http.post(this.webservice+"check-duplicate-account",postParams); 
+  }
+
+  getCustomerMessages(user_id){
+    let postParams=new FormData();
+    postParams.append('user_id',user_id);
+    return this.http.post(this.webservice+"get-customer-messages",postParams); 
   }
 
   BeginCompanyRegistration(company_name,company_email,company_pass,phone_no, currency, opted_plan, company_logo, payment_transaction_details){

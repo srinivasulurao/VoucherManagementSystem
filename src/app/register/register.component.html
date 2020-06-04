@@ -69,15 +69,13 @@
         Thank you for choosing us, click <a href='javascript:void(0)' (click)="redirectLogin()" style="text-decoration: underline;">here</a> to login.
         </span>
         <!-- <button type="submit" class="btn btn-info">Submit</button> -->
-        <div id='paypal_button' [ngStyle]="SubmitButtonStyle"></div>
+        <div #paypal id='paypal_button' [ngStyle]="SubmitButtonStyle"></div>
 
         
         
       </form>
 
-      
-      
-
     </div>
   </div> <!-- Container ends here. -->
 </div>
+

@@ -1,16 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
+*{
+    font-family:'Titillium Web', sans-serif;
+}
 body{
     font-weight: 300 !important;
     color:#333;
-    font-family: 'Roboto', sans-serif !important;  
+    /* font-family: 'Roboto', sans-serif !important;   */
     /*font-family: 'Carrois Gothic', sans-serif !important;*/
+    font-family:'Titillium Web', sans-serif;
     font-size: 15px !important;
 }
 
 h1,h2,h3,h4,h5,h6,label,input,button,textarea{
     /* font-family: 'Carrois Gothic', sans-serif !important; */
-    font-family: 'Roboto', sans-serif !important;  
+    /* font-family: 'Roboto', sans-serif !important;   */
 }  
 
 .left_sidebar{

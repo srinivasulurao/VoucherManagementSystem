@@ -11,6 +11,9 @@ import { ProductsComponent } from "./products/products.component";
 import { AddProductComponent } from "./add-product/add-product.component";
 import { ViewProductComponent } from "./view-product/view-product.component";
 import { RegisterComponent } from "./register/register.component";
+import { EmbedCartComponent } from "./embed-cart/embed-cart.component";
+import { AboutUsComponent } from "./about-us/about-us.component";
+import { CommunicationsComponent } from "./communications/communications.component";
 
 const routes: Routes=[
     {path:"",component:HomePageComponent}, //Or you can go for redirect component with redirectTo and pathMatch parameter.
@@ -23,6 +26,9 @@ const routes: Routes=[
     {path:"my-account",component:MyProfileComponent},
     {path:'products/add-product',component:AddProductComponent},
     {path:'products/view-product/:id',component:ViewProductComponent}, 
+    {path:'cart-embedding',component:EmbedCartComponent},
+    {path:'about-us',component:AboutUsComponent},
+    {path:'customer-messages',component:CommunicationsComponent}, 
     {path:"**", component:PageNotFoundComponent}
 ];
 

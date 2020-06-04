@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<div class="left_sidebar col-md-2">
+<app-sidebar></app-sidebar>
+</div>
+
+<div class='content-right col-md-10'>
+
+  <div [ngClass]='alertClass'>{{alertMessage}}</div>
+<h1>Embed Cart</h1><hr>
+<mat-form-field style='width:70%'>
+  <mat-label>Copy paste this code in your static site.</mat-label>
+  <textarea id='cart_code_box' matInput style='border-radius:4px;padding:10px;border:1px solid lightgrey'>
+    {{static_cart_code}}
+  </textarea>
+</mat-form-field>
+<br>
+<button (click)="CopyCartCode()" matInput mat-raised-button color="primary">Copy</button>
+</div>

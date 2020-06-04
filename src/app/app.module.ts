@@ -40,7 +40,10 @@ import { UploadVoucherComponent } from './upload-voucher/upload-voucher.componen
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ViewProductComponent } from './view-product/view-product.component';
-import { RegisterComponent } from './register/register.component'; 
+import { RegisterComponent } from './register/register.component';
+import { EmbedCartComponent } from './embed-cart/embed-cart.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { CommunicationsComponent } from './communications/communications.component'; 
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { RegisterComponent } from './register/register.component';
     MyProfileComponent,
     AddProductComponent,
     ViewProductComponent,
-    RegisterComponent
+    RegisterComponent,
+    EmbedCartComponent,
+    AboutUsComponent,
+    CommunicationsComponent
   ],
   imports: [
     BrowserModule,
